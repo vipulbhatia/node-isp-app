@@ -7,6 +7,6 @@ export class AppService {
     constructor(private http: HttpClient) { }
 
     getIspData() {
-        return this.http.get('http://localhost:8081/providers')
+        return this.http.get('/api/providers')
     }
 }

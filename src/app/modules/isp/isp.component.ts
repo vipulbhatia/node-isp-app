@@ -1,10 +1,11 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { AppService } from '../../services/app.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: '',
-    templateUrl: './isp.component.html',
-    styleUrls: ['./isp.css']
+    templateUrl: '../../views/isp.component.html',
+    styleUrls: ['../../css/isp.css']
 })
 
 export class IspComponent implements OnInit {
@@ -14,7 +15,7 @@ export class IspComponent implements OnInit {
     search = new EventEmitter();
     activeTab;
     hitCount = 0;
-    constructor(private appService: AppService) { }
+    constructor(private appService: AppService, private activatedRoute: ActivatedRoute) { }
 
     selectIsp(val) {
         this.selectedIspInfo = this.ispData[val];
@@ -22,6 +23,7 @@ export class IspComponent implements OnInit {
     }
 
     checkActive(val) {
+        console.log(val, this.activeTab);
         return val === this.activeTab;
     }
 
@@ -30,9 +32,12 @@ export class IspComponent implements OnInit {
     }
 
     ngOnInit() {
+        let selectedIsp = this.activatedRoute.snapshot.params['id'];
+        console.log(selectedIsp);
         this.appService.getIspData().subscribe((data: any) => {
             this.ispDataFromServer = this.ispData = data.result.providers;
             this.hitCount = data.result.hitCount;
+            if(selectedIsp !== 'isp') this.selectedIspInfo = this.ispDataFromServer[selectedIsp];
         });
         this.search
         .asObservable()

@@ -2,8 +2,8 @@ import { Component, Input, OnInit, OnChanges } from '@angular/core';
 
 @Component({
     selector: 'right-panel',
-    templateUrl: './isp-info.component.html',
-    styleUrls: ['./isp-info.css']
+    templateUrl: '../../views/isp-info.component.html',
+    styleUrls: ['../../css/isp-info.css']
 })
 
 export class IspInfoComponent implements OnInit, OnChanges {

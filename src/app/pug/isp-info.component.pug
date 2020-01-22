@@ -22,8 +22,8 @@ div.row
 
 div.row
     div.col-md-3.offset-md-1.mt-2
-        a.fa.fa-link(href="#", [target]="ispInfo.url") Link
+        a.fa.fa-link([routerLink]="[ispInfo.url]", target="_blank") Link
     div.col-md-3
-        a.fa.fa-share(href="#", [target]="ispInfo.url") Share
+        a.fa.fa-share([href]="ispInfo.url", target="_blank") Share
     div.col-md-3        
-        a.fa.fa-download(href="#", [target]="ispInfo.url") Download
+        a.fa.fa-download([href]="ispInfo.url", target="_blank") Download

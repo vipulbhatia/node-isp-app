@@ -4,7 +4,8 @@ import { IspComponent } from './modules/isp/isp.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'isp', pathMatch: 'full' },
-    { path: 'isp', component: IspComponent }
+    { path: 'isp', component: IspComponent },
+    { path: 'isp/:id', component: IspComponent }
 ];
 
 @NgModule({
