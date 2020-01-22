@@ -1,0 +1,29 @@
+div.row(*ngIf="ispInfo")
+    div.col.md-5
+        img([src]="ispInfo.image")
+    div.col-md-7
+        div.card
+            h5.card-header {{ispInfo.name}}
+            div.card-body
+                div.card-title Rating:
+                    span.fa.fa-star(*ngFor="let star of stars")
+                div.card-text
+                    p.fa.fa-wifi &nbsp; Max Speed: {{ispInfo.max_speed}} Mbps
+                    br
+                    p.fa.fa-phone &nbsp; {{ispInfo.contact_number}}
+                    br
+                    p.fa.fa-envelope-square &nbsp; {{ispInfo.email}}
+                    br
+                    p.fa.fa-rupee-sign &nbsp; Min. Plan: {{ispInfo.lowest_price}} /-
+div.row
+    div.offset-md-2.col-md-8.mt-2.isp-desc               
+        div.card
+            p.card-text {{ispInfo.description}}
+
+div.row
+    div.col-md-3.offset-md-1.mt-2
+        a.fa.fa-link(href="#", [target]="ispInfo.url") Link
+    div.col-md-3
+        a.fa.fa-share(href="#", [target]="ispInfo.url") Share
+    div.col-md-3        
+        a.fa.fa-download(href="#", [target]="ispInfo.url") Download

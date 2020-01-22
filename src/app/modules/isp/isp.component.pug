@@ -1,0 +1,35 @@
+div.container-fluid
+    isp-header([totalProviders]="ispDataFromServer.length", [totalApiHits]="hitCount")
+    div.row
+        div.col-6
+            div.row
+                div.col-md-12
+                    //h1 ISP
+                    div
+                        input.form-control(type="text", (keyup)="search.emit($event.target.value)", placeholder="search here...")
+                    div#isp-list
+                        ul.list-group
+                            li.list-group-item-warning.d-flex.justify-content-between.align-items-center([ngClass]="{active: checkActive(isp.name)}", *ngFor="let isp of ispData; let i=index;")
+                                span
+                                    a.fa.fa-database
+                                span {{isp.name}}
+                                span
+                                    p.fa.fa-rupee-sign {{isp.lowest_price}} &nbsp;
+                                    button.btn.btn-dark([value]="i", (click)="selectIsp(i)") >
+                    div.row.mt-2
+                        div.col-md-offset-2.col-md-4
+                            p.alert.alert-success
+                                span.fa.fa-sort-up
+                                span Sort By
+                        div.col-md-6    
+                            span.badge.badge-pill.badge-dark    
+                                input(type="radio", name="sortBy", value="rating", (change)="sortBy($event.target.value)")
+                                | Rating
+                            span.badge.badge-pill.badge-dark    
+                                input(type="radio", name="sortBy", value="lowest_price", (change)="sortBy($event.target.value)")
+                                | Price
+        div.col-md-6
+            div.row
+                div.col-md-12
+                    //h1 isp-info
+                    right-panel(*ngIf="selectedIspInfo", [ispInfo]="selectedIspInfo")
